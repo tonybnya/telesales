@@ -3,7 +3,7 @@ Script Name : models.py
 Description : Product Model
 Author      : @tonybnya
 """
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import MinValueValidator
 from django.db import models
 
 
@@ -39,10 +39,10 @@ class Product(models.Model):
     quantity_on_hand = models.IntegerField(default=0, validators=[MinValueValidator(0)])
     forecasted_quantity = models.IntegerField(default=0, validators=[MinValueValidator(0)])
 
-    activity_exception_decoration = models.CharField(max_length=255, blank=True, null=True)
-    # activity = models.CharField(max_length=255, blank=True, null=True)
-    # exception = models.CharField(max_length=255, blank=True, null=True)
-    # decoration = models.CharField(max_length=255, blank=True, null=True)
+    activity = models.CharField(max_length=255, blank=True, null=True)
+    exception = models.CharField(max_length=255, blank=True, null=True)
+    decoration = models.CharField(max_length=255, blank=True, null=True)
+    # activity_exception_decoration = models.CharField(max_length=255, blank=True, null=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
