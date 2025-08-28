@@ -54,7 +54,7 @@ class SalesOrder(models.Model):
         """
         Calculate grand total with VAT (20%)
         """
-        return self.total_amount * 1.20
+        return float(self.total_amount) * 1.20
 
     def confirm_order(self):
         """
