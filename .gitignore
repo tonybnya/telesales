@@ -14,6 +14,8 @@ migrations/
 management/
 test_api.py
 debug_api.py
+debug_failures.py
+create_draft_order.py
 
 # If your build process includes running collectstatic, then you probably don't need or want to include staticfiles/
 # in your Git repository. Update and uncomment the following line accordingly.
