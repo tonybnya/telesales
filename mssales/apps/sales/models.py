@@ -65,7 +65,7 @@ class SalesOrder(models.Model):
 
         with transaction.atomic():
             # create reservations for all order lines
-            for line in self.order_lines_all():
+            for line in self.order_lines.all():
                 if line.product.available_quantity < line.qty:
                     raise ValueError(f"Insufficient stock for {line.product.name}")
 
