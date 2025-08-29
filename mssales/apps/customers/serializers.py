@@ -28,12 +28,11 @@ class CustomerSerializer(serializers.ModelSerializer):
 
     def validate_phone(self, value):
         """
-        Remove spaces and dashes to clean the phone number
+        Basic phone validation - just check that it contains digits and is reasonable length
         """
-        clean_phone = value.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
-        phone_pattern = re.compile(r'^[\+]?[1-9]?[\d\s\-\(\)]+$')
-        if len(clean_phone) < 10 or not phone_pattern.match(value):
-            raise serializers.ValidationError("Enter a valid phone number.")
+        clean_phone = ''.join(filter(str.isdigit, value))
+        if len(clean_phone) < 10:
+            raise serializers.ValidationError("Phone number must contain at least 10 digits.")
         return value
 
     def validate_email(self, value):
