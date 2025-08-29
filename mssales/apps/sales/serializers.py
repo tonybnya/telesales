@@ -6,11 +6,11 @@ Author      : @tonybnya
 
 
 from rest_framework import serializers
+from .models import SalesOrder, SalesOrderLine
+from decimal import Decimal
 
-from .models import SalesOrderLine
 
-
-class SalesOrderLine(serializers.ModelSerializer):
+class SalesOrderLineSerializer(serializers.ModelSerializer):
     """
     Serializer of the SalesOrderLine Model.
     """
