@@ -31,8 +31,8 @@ class CustomerSerializer(serializers.ModelSerializer):
         Remove spaces and dashes to clean the phone number
         """
         clean_phone = value.replace(' ', '').replace('-', '').replace('(', '').replace(')', '')
-        phone_pattern = re.compile(r'^\+?1?\d{9,15}$')
-        if not phone_pattern.match(clean_phone):
+        phone_pattern = re.compile(r'^[\+]?[1-9]?[\d\s\-\(\)]+$')
+        if len(clean_phone) < 10 or not phone_pattern.match(value):
             raise serializers.ValidationError("Enter a valid phone number.")
         return value
 
